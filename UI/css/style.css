@@ -1,0 +1,67 @@
+body{
+  font-family: sans-serif;
+  font-size: 15px;
+  line-height: 1.5
+  padding:0;
+  margin: 0;
+  background-color:#f4bc42;
+}
+
+/* global stuff */
+.container{
+  width:80%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+header{
+  background:#4f3c14;
+  color:#ffffff;
+  padding-top:10px;
+  min-height:60px;
+}
+
+header a{
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+header a:hover{
+  color: orange;
+  font-weight: bold;
+}
+
+header ul{
+  margin: 0;
+  padding: 0;
+}
+
+header li{
+  float: left;
+  display: inline;
+  padding: 0 15px 0 15px;
+}
+
+header .logo{
+  float: left;
+}
+header .logo h1{
+  margin: 0;
+}
+
+header nav{
+  float: right;
+  margin-top: 10px;
+}
+
+/* footer */
+footer{
+  bottom: 0;
+  padding:10px;
+  margin-top: 20px;
+  color:#ffffff;
+  background-color:#4f3c14;
+  text-align: center;
+}
