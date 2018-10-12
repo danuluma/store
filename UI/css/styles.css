@@ -1,0 +1,115 @@
+body{
+  font-family: sans-serif;
+  font-size: 15px;
+  line-height: 1.5
+  padding:0;
+  margin: 0;
+  background-color:#f4bc42;
+}
+
+/* global stuff */
+.container{
+  width:80%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+header{
+  background:#4f3c14;
+  color:#ffffff;
+  padding-top:10px;
+  min-height:60px;
+}
+
+header a{
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+header a:hover{
+  color: orange;
+  font-weight: bold;
+}
+
+header ul{
+  margin: 0;
+  padding: 0;
+}
+
+header li{
+  float: left;
+  display: inline;
+  padding: 0 15px 0 15px;
+}
+
+header .logo{
+  float: left;
+}
+
+header .logo h1{
+  margin: 0;
+}
+
+header nav{
+  float: right;
+  margin-top: 10px;
+}
+
+/* footer styles */
+footer{
+  bottom: 0;
+  padding:10px;
+  margin-top: 20px;
+  color:#ffffff;
+  background-color:#4f3c14;
+  text-align: center;
+}
+
+/* products page */
+
+.catalogue {
+  border-top: solid 0.25em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.catalogue li {
+  padding: 10px;
+  margin: 10px;
+}
+
+.catalogue li img {
+  max-width: 11em;
+  max-height: 11em;
+  float: left;
+  padding: 10px;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  border-radius: 1.5em;
+}
+
+.catalogue li .price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.catalogue li form, .catalog li div {
+  display: inline;
+  float: right;
+}
+
+.catalogue li input[type="submit"] {
+  background-color: green;
+  border-radius: 5px;
+  border: solid thin black;
+  color: white;
+  font-size: 24px;
+  padding: 5px 20px;
+}
+
+.catalogue li input[type="submit"]:hover {
+  background-color: grey;
+}
