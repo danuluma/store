@@ -76,6 +76,13 @@ footer{
   margin: 0;
 }
 
+.catalogue .available {
+  color: green;
+}
+.catalogue .min {
+  color: red;
+}
+
 .catalogue li {
   padding: 10px;
   margin: 10px;
@@ -114,8 +121,7 @@ footer{
   background-color: grey;
 }
 
-/*products page
-*/
+/*products page stuff*/
 .products {
   margin: 0;
   padding: 0.5em;
@@ -129,6 +135,12 @@ footer{
 }
 .products td.image {
   display: none;
+}
+.products .available {
+  color: green;
+}
+.products .min {
+  color: red;
 }
 
 .products td.description h1 {
@@ -148,5 +160,6 @@ footer{
   }
   .products td.image img {
     height: 130px;
+    margin-top: 2em;
   }
 }
