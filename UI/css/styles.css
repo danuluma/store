@@ -67,13 +67,20 @@ footer{
   text-align: center;
 }
 
-/* products page */
+/* main store page */
 
 .catalogue {
   border-top: solid 0.25em;
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.catalogue .available {
+  color: green;
+}
+.catalogue .min {
+  color: red;
 }
 
 .catalogue li {
@@ -112,4 +119,47 @@ footer{
 
 .catalogue li input[type="submit"]:hover {
   background-color: grey;
+}
+
+/*products page stuff*/
+.products {
+  margin: 0;
+  padding: 0.5em;
+}
+.products table {
+  border-collapse: collapse;
+}
+.products td {
+  padding: 0.5em;
+  margin: 0;
+}
+.products td.image {
+  display: none;
+}
+.products .available {
+  color: green;
+}
+.products .min {
+  color: red;
+}
+
+.products td.description h1 {
+  font-size: 24px;
+}
+.products td.actions ul {
+  padding: 0;
+  list-style: none;
+}
+.products td.actions ul li {
+  padding: 0.5em 0.5em;
+}
+
+@media (min-width: 450px) {
+  .products td.image {
+    display: block;
+  }
+  .products td.image img {
+    height: 130px;
+    margin-top: 2em;
+  }
 }
