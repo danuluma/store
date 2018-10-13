@@ -22,13 +22,13 @@ header{
   min-height:60px;
 }
 
-header a{
+header nav a{
   color: white;
   text-decoration: none;
   font-size: 14px;
   text-transform: uppercase;
 }
-header a:hover{
+header nav a:hover{
   color: orange;
   font-weight: bold;
 }
@@ -50,6 +50,11 @@ header .logo{
 
 header .logo h1{
   margin: 0;
+}
+header .logo h1 a{
+  color: white;
+  text-decoration: none;
+  font-size: 32px;
 }
 
 header nav{
@@ -89,8 +94,8 @@ footer{
 }
 
 .catalogue li img {
-  max-width: 11em;
-  max-height: 11em;
+  width: 11em;
+  height: 11em;
   float: left;
   padding: 10px;
   margin-right: 1em;
@@ -209,7 +214,7 @@ footer{
  background-color: green;
 }
 
-
+/*add/edit item*/
 .new-item{
   font-size: 16px;
   width:1200px;
@@ -255,7 +260,6 @@ footer{
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #c8ef17;
   border-radius: 15px;
 }
 
@@ -311,3 +315,36 @@ footer{
 .form-content li input.user-btn:hover {
   background-color: green;
 }
+
+/*sale record*/
+
+.record{
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+  max-width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #f4bc42;
+  background-color: #712511;
+  font-size: 16px;
+}
+
+.record .date, .record .attendant, .record .description{
+  flex: 1 0 300px;
+  max-width: 100%;
+  text-align: center;
+}
+
+#item{
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 5px 10px 5px 10px;
+  flex-direction: row;
+}
+
+
+
