@@ -2,12 +2,18 @@ body{
   font-family: sans-serif;
   font-size: 15px;
   line-height: 1.5
-  padding:0;
+  padding: 0;
+
+  /*overflow: hidden;*/
   margin: 0;
   background-color:#f4bc42;
 }
 
 /* global stuff */
+
+/*body section{
+  margin-bottom: 400px;
+}*/
 .container{
   width:80%;
   max-width: 100%;
@@ -62,14 +68,22 @@ header nav{
   margin-top: 10px;
 }
 
+body{
+  min-height: 100vh;
+}
+
 /* footer styles */
 footer{
-  bottom: 0;
   padding:10px;
   margin-top: 20px;
   color:#ffffff;
   background-color:#4f3c14;
   text-align: center;
+}
+.footer{
+  position: absolute;
+  width: 98.5%;
+  bottom: 0;
 }
 
 /* main store page */
@@ -287,9 +301,10 @@ footer{
 }
 
 .form-content li h2 {
+  text-align: center;
   padding: 8px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 24px;
   letter-spacing: .09em;
   text-transform: uppercase;
   flex: 1 0 120px;
