@@ -8,8 +8,8 @@ loginForm.addEventListener('submit', getTokenFunction);
 
 
 
-const url_base = 'http://localhost:5000/dann/api/v2'
-// const url_base = 'https://dannstore.herokuapp.com/'
+// const url_base = 'http://localhost:5000/dann/api/v2'
+const url_base = 'https://dannstore.herokuapp.com/dann/api/v2'
 
 function getTokenFunction(e) {
     let element;
@@ -22,7 +22,7 @@ function getTokenFunction(e) {
     fetch(url, {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:5000/dann/api/v2/login",
+        "url": url,
         "method": "POST",
         "headers": {
             "Content-Type": "application/json",
