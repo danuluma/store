@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Dann">
+  <title>Dann's Books</title>
+  <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1><a href="store.html">Dann's Book Store</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="product.html">Admin</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="record.html">Record</a></li>
+          <li><a href="#" id="logout">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+
+      <div class="form-title">
+        <h2>
+          Edit this book
+        </h2>
+      </div>
+      <form class="edit-item" id=""  action="" method="">
+
+          <div class="form-group">
+              <label for="title">Title</label> <br>
+              <input class="form-control" type="text" id="title" placeholder="Name of book" name=""/>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="description">Description</label> <br>
+              <textarea class="form-control" rows="10" id="description" placeholder="Type the book's description.">
+              </textarea>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="price">Price</label> <br>
+              <input class="form-control" type="text" value="" id="price" placeholder="Price" />
+            </div>
+            <div class="form-group">
+              <label for="quantity">Quantity</label> <br>
+              <input class="form-control" type="text" value="" id="quantity" placeholder="Quantity" />
+            </div>
+            <div class="form-group">
+              <label for="min">Minimun Quantity</label> <br>
+              <input class="form-control" type="text" value="" id="min" placeholder="Minimun Quantity" />
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="item_image"> Image</label> <br>
+              <input class="" type="file" name="food_image" id="image" />
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="submit" name="submit" value="Save" class="create-btn" />
+            </div>
+      </form>
+
+
+    </div>
+  </section>
+
+  <footer>
+    <p>Copyright &copy; 2018 | Dann's</p>
+  </footer>
+  <script type="module" src="./js/edit.js"></script>
+</body>
+</html>

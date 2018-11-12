@@ -19,7 +19,7 @@
         <ul>
           <li><a href="product.html">Admin</a></li>
           <li><a href="cart.html">Cart</a></li>
-          <li><a href="record.html">Record</a></li>
+          <li><a href="#">Profile</a></li>
           <li><a href="#" id="logout">Logout</a></li>
         </ul>
       </nav>
@@ -29,29 +29,24 @@
   <section>
     <div class="container">
 
-<form id="reg-form">
+      <form id="login-form" action="" method="POST">
         <ul class="form-content">
           <li>
             <h2>
-              Add new attendant
+              Login
             </h2>
           </li>
           <li>
             <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Enter the username here">
+            <input type="text" id="username" placeholder="Enter your username here">
           </li>
 
           <li>
             <label for="passw">Password</label>
-            <input type="password" id="passw" placeholder="Enter user's password here">
+            <input type="password" id="passw" placeholder="Enter your password here">
           </li>
-          <li>
-            <label for="passw">Confirm Password</label>
-            <input type="password" id="confirm_passw" placeholder="Enter user's password again">
-          </li>
-
-          <li>
-            <input type="submit" name="submit" value="Save" class="user-btn" />
+          <li >
+            <input type="submit" id="login" name="submit" value="Login" class="user-btn" formaction="" />
           </li>
         </ul>
       </form>
@@ -62,6 +57,6 @@
   <footer class="footer">
     <p>Copyright &copy; 2018 | Dann's</p>
   </footer>
-  <script type="module" src="./js/signup.js"></script>
+  <script type="module"  src="./js/login.js"></script>
 </body>
 </html>
