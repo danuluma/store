@@ -4,7 +4,7 @@ logoutUser();
 
 
 
-editBook.addEventListener('submit', editProductFunction);
+editBook.addEventListener('submit', uploadImage);
 
 // console.log(newBook)
 // const url_base = 'http://localhost:5000/api/v2'
@@ -61,8 +61,8 @@ function getBookFunction(e) {
   }
   
 
-function editProductFunction(e) {
-    e.preventDefault();
+function editProductFunction(image_url) {
+    // e.preventDefault();
     // alert(book_id)
     // uploadImage(document.querySelector('#new-book #image').files[0]);
     // let element;
@@ -72,7 +72,7 @@ function editProductFunction(e) {
     let quantity = document.querySelector('#quantity').value;
     let min = document.querySelector('#min').value;
     let image = document.querySelector('#image').value;
-    let image_url = 'https://res.cloudinary.com/danuluma/image/upload/v1541557642/dannstore/aaaindex.png';
+    // let image_url = 'https://res.cloudinary.com/danuluma/image/upload/v1541557642/dannstore/aaaindex.png';
     // let image_url = localStorage.getItem('image_url');
     console.log(image)
     let access_token = localStorage.getItem('access_token');
@@ -113,21 +113,32 @@ function editProductFunction(e) {
     }
 
 
-// function uploadImage(file) {
-//     const formData = new FormData();
-//     formData.append("file", file);
-//     formData.append("upload_preset", 'ry6j3ae4'); 
 
-//     fetch('https://api.cloudinary.com/v1_1/danuluma/image/upload', {
-//         method: 'POST',
-//         body: formData
-//     })
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log(data.secure_url)
-//             if (data.secure_url !== '') {
-//                 localStorage.setItem('secure_url', data.secure_url);     
-//             }
-//         })
-//         .catch(err => console.error(err))
-//     }
+    function uploadImage(e) {
+        e.preventDefault();
+        let file = document.querySelector('#image').files[0];
+        console.log(file);
+        const cloudinary_url = 'https://api.cloudinary.com/v1_1/danuluma/image/upload';
+        const data = new FormData();
+        data.append("file", file);
+        data.append("upload_preset", 'ry6j3ae4'); 
+    
+        fetch(cloudinary_url, {
+            method: 'POST',
+            body: data
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.secure_url)
+                if (data.secure_url !== '') {
+                    let image_url = data.secure_url;
+                    editProductFunction(image_url);     
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                confirm("Error encountered. Continue without an image?");
+                editProductFunction("#");       
+            })
+        }
+    
