@@ -1,11 +1,20 @@
 const editBook = document.querySelector('body section .edit-item');
+import {logoutUser, url_base} from './lib.js';
+logoutUser();
+
 
 
 editBook.addEventListener('submit', editProductFunction);
 
 // console.log(newBook)
-const url_base = 'http://localhost:5000/api/v2'
+// const url_base = 'http://localhost:5000/api/v2'
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
+
+if(localStorage.getItem('logged_in') == 'False'){
+    window.location.href='index.html';
+    // alert("Please log in first")
+  };
+  
 let book_id = JSON.parse(localStorage.getItem("edit_book"));
 
 let title = document.querySelector('#title');

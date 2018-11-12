@@ -1,11 +1,19 @@
 const cat = document.querySelector('.catalogue li');
+import {logoutUser, url_base} from './lib.js';
+logoutUser();
+
 
 cat.addEventListener('click', addBookToCart);
 
 
 
-const url_base = 'http://localhost:5000/api/v2';
+// const url_base = 'http://localhost:5000/api/v2';
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
+
+if(localStorage.getItem('logged_in') == 'False'){
+  window.location.href='index.html';
+  // alert("Please log in first")
+};
 
 getBooksFunction();
 function getBooksFunction(e) {
@@ -17,7 +25,7 @@ function getBooksFunction(e) {
   fetch(url, {
     "async": true,
     "crossDomain": true,
-    "url": url,
+    // "url": url,
     "method": "GET",
     "headers": {
       "Authorization": "Bearer " + access_token,
