@@ -36,14 +36,17 @@ function getTokenFunction(e) {
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('user_role', data.role);
         localStorage.setItem('username', username);
-        me = localStorage.getItem('access_token');
-        console.log(data)
+
+        localStorage.setItem('logged_in', 'True');
+        // let me = localStorage.getItem('access_token');
         // info = '<h3> </h3>'
         // if (data.access_token) {
         //     alert("Signed in successfully");
             // setTimeout(function () {
-                window.location.href='store.html'
+                window.location.href='store.html';
+                // alert("Signed in successfully");
             // }, 10000);
     
         // }
