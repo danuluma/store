@@ -7,18 +7,22 @@ const confirmPassw = document.querySelector('#reg-form #confirm_passw');
 me = localStorage.getItem('access_token');
 console.log(me)
 
-regForm.addEventListener('submit', getTokenFunction);
+regForm.addEventListener('submit', signupUserFunction);
 
 
 
 const url_base = 'http://localhost:5000/api/v2'
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
 
-function getTokenFunction(e) {
+function signupUserFunction(e) {
     let element;
     let username = regName.value;
     let password = regPassw.value;
     let confirmpassword = confirmPassw.value;
+    if (password !== confirmpassword){
+        alert("Passwords should match");
+        // break;
+    }
 
     let access_token = localStorage.getItem('access_token');
     element = e;
@@ -40,7 +44,10 @@ function getTokenFunction(e) {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data.Error)
+        if (data.Error){
+            alert(data.Error);
+        }
         })
     }
 

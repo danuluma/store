@@ -64,7 +64,9 @@ header nav{
   margin-top: 10px;
 }
 
-
+#book_id{
+  display: none;
+}
 /* footer styles */
 footer{
   padding:10px;
@@ -96,6 +98,8 @@ footer{
 }
 
 .catalogue li {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   margin: 10px;
 }
