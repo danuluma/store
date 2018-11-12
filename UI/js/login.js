@@ -55,7 +55,7 @@ function getTokenFunction(e) {
             localStorage.setItem('username', username);
 
             localStorage.setItem('logged_in', 'True');
-            window.location.href='store.html';
+            window.location.href='./UI/store.html';
         }
         // info = '<h3> </h3>'
         // if (data.access_token) {
