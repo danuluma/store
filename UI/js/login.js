@@ -1,7 +1,10 @@
 const loginForm = document.getElementById('login-form');
 const loginName = document.querySelector('#login-form #username');
 const loginPassw = document.querySelector('#login-form #passw');
-const retinfo = document.querySelector('#show-info');
+// const retinfo = document.querySelector('#show-info');
+
+import {logoutUser, url_base} from './lib.js';
+logoutUser();
 
 
 
@@ -9,16 +12,22 @@ loginForm.addEventListener('submit', getTokenFunction);
 
 
 
-const url_base = 'http://localhost:5000/api/v2'
+
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
+// console.log(url_base)
+if(localStorage.getItem('logged_in') == 'False'){
+    // window.location.href='index.html';
+    // alert("Please log in first")
+  };
+  
 
 function getTokenFunction(e) {
-    let element;
+    e.preventDefault();
+    
     let username = loginName.value;
     let password = loginPassw.value;
 
-    element = e;
-    e.preventDefault();
+    
     const url = url_base + '/login';
     fetch(url, {
         "async": true,
@@ -37,7 +46,8 @@ function getTokenFunction(e) {
       .then((data) => {
         localStorage.setItem('access_token', data.access_token);
         localStorage.setItem('username', username);
-        me = localStorage.getItem('access_token');
+        localStorage.setItem('logged_in', 'True');
+        // let me = localStorage.getItem('access_token');
         console.log(data)
         // info = '<h3> </h3>'
         // if (data.access_token) {

@@ -1,10 +1,10 @@
-const newBook = document.querySelector('body section .new-item');
+const editBook = document.querySelector('body section .edit-item');
 import {logoutUser, url_base} from './lib.js';
 logoutUser();
 
 
 
-newBook.addEventListener('submit', editBookFunction);
+editBook.addEventListener('submit', editProductFunction);
 
 // console.log(newBook)
 // const url_base = 'http://localhost:5000/api/v2'
@@ -15,10 +15,55 @@ if(localStorage.getItem('logged_in') == 'False'){
     // alert("Please log in first")
   };
   
+let book_id = JSON.parse(localStorage.getItem("edit_book"));
 
-function editBookFunction(e) {
+let title = document.querySelector('#title');
+let description = document.querySelector('#description');
+let price = document.querySelector('#price');
+let quantity = document.querySelector('#quantity');
+let min = document.querySelector('#min');
+let image = document.querySelector('#image');
+
+getBookFunction();
+function showBook(data){
+    title.setAttribute("value", data.title);
+    description.setAttribute("value", data.description);
+    price.setAttribute("value", data.price);
+    quantity.setAttribute("value", data.quantity);
+    min.setAttribute("value", data.minimum);
+    // console.log(data.description)
+}
+
+function getBookFunction(e) {
+    let element;
+    // console.log(book_id)
+    let access_token = localStorage.getItem('access_token');
+    element = e;
+    const url = url_base + '/products/' + book_id;
+    // let data1;
+    fetch(url, {
+      "async": true,
+      "crossDomain": true,
+      "url": url,
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer " + access_token,
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache"
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        showBook(data);
+      })
+    // return data1
+  }
+  
+
+function editProductFunction(e) {
     e.preventDefault();
-    alert("Hey")
+    // alert(book_id)
     // uploadImage(document.querySelector('#new-book #image').files[0]);
     // let element;
     let title = document.querySelector('#title').value;
@@ -32,12 +77,12 @@ function editBookFunction(e) {
     console.log(image)
     let access_token = localStorage.getItem('access_token');
     // element = e;
-    const url = url_base + '/products';
+    const url = url_base + '/products/' + book_id;
     fetch(url, {
         "async": true,
         "crossDomain": true,
         "url": url,
-        "method": "POST",
+        "method": "PUT",
         "headers": {
             "Authorization": "Bearer " + access_token,
             "Content-Type": "application/json",
@@ -59,8 +104,9 @@ function editBookFunction(e) {
         if (data.Error){
             alert(JSON.stringify(data.Error))
         }
-        if (data.message){
-            alert(JSON.stringify(data.message))
+        if (data.Message){
+            alert(JSON.stringify(data.Message))
+            window.location.href='product.html'
         }
         // window.location.href='add.html'
         })
