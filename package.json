@@ -1,0 +1,35 @@
+{
+  "name": "store",
+  "version": "1.0.0",
+  "description": "Dann's store management app",
+  "main": "login.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danuluma/store.git"
+  },
+  "keywords": [
+    "dann's",
+    "dan",
+    "store"
+  ],
+  "author": "Dan Uluma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danuluma/store/issues"
+  },
+  "homepage": "https://github.com/danuluma/store#readme",
+  "jest": {
+    "verbose": true,
+    "automock": false,
+    "setupFiles": [
+      "./UI/__tests__/setupJest.js"
+    ]
+  }
+}

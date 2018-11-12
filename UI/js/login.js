@@ -3,16 +3,16 @@ const loginName = document.querySelector('#login-form #username');
 const loginPassw = document.querySelector('#login-form #passw');
 // const retinfo = document.querySelector('#show-info');
 
-import {logoutUser, url_base} from './lib.js';
-logoutUser();
+// import {logoutUser, url_base} from './lib.js';
+// logoutUser();
 
 
 
-loginForm.addEventListener('submit', getTokenFunction);
+// loginForm.addEventListener('submit', getTokenFunction);
 
 
 
-
+const url_base = 'http://localhost:5000/api/v2'
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
 // console.log(url_base)
 if(localStorage.getItem('logged_in') == 'False'){
