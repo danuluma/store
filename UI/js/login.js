@@ -19,15 +19,15 @@ if(localStorage.getItem('logged_in') == 'False'){
     // window.location.href='index.html';
     // alert("Please log in first")
   };
-  
+
 
 function getTokenFunction(e) {
     e.preventDefault();
-    
+
     let username = loginName.value;
     let password = loginPassw.value;
 
-    
+
     const url = url_base + '/login';
     fetch(url, {
         "async": true,
@@ -38,24 +38,30 @@ function getTokenFunction(e) {
             "Content-Type": "application/json",
             "Cache-Control": "no-cache"
         },
-        body:JSON.stringify({
+        "body":JSON.stringify({
             "username": username,
         "password": password})
       })
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem('access_token', data.access_token);
-        localStorage.setItem('user_role', data.role);
-        localStorage.setItem('username', username);
-
-        localStorage.setItem('logged_in', 'True');
         // let me = localStorage.getItem('access_token');
         console.log(data)
+        if (data.Error){
+            alert(data.Error);
+        }
+        else{
+            localStorage.setItem('access_token', data.access_token);
+            localStorage.setItem('user_role', data.role);
+            localStorage.setItem('username', username);
+
+            localStorage.setItem('logged_in', 'True');
+            window.location.href='store.html';
+        }
         // info = '<h3> </h3>'
         // if (data.access_token) {
         //     alert("Signed in successfully");
             // setTimeout(function () {
-                window.location.href='store.html';
+                // window.location.href='store.html';
                 // alert("Signed in successfully");
             // }, 10000);
 
