@@ -1,11 +1,19 @@
 const prod = document.querySelector('body section .container');
+import {logoutUser, url_base} from './lib.js';
+logoutUser();
+
 
 // prod.addEventListener('click', addBookToCart);
 
 
 // console.log(prod)
-const url_base = 'http://localhost:5000/api/v2';
+// const url_base = 'http://localhost:5000/api/v2';
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
+if(localStorage.getItem('logged_in') == 'False'){
+  window.location.href='index.html';
+  // alert("Please log in first")
+};
+
 
 getBooksFunction();
 function getBooksFunction(e) {
