@@ -34,10 +34,10 @@ function getSalesFunction(e) {
   })
     .then((res) => res.json())
     .then((data) => {
-      
+
       let salesData = data.Sales;
       // console.log(salesData);
-      
+
       let output = '';
       salesData.forEach(function (sale) { 
         let time = sale.created_at.split('.')
@@ -47,7 +47,7 @@ function getSalesFunction(e) {
         <div class="date">
           <p>${time[0]}</p>
         </div>
-  
+
         <div class="description">
           <div id="item">
             <div>Books</div>
@@ -60,12 +60,12 @@ function getSalesFunction(e) {
             <div>Ksh ${sale.total}</div>
           </div>
         </div>
-  
+
         <div class="attendant">
           <p>${sale.attendant_name}</p>
         </div>
       </div>
-      
+
         `;
       });
       sales.innerHTML = output;
