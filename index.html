@@ -20,7 +20,7 @@
           <li><a href="product.html">Admin</a></li>
           <li><a href="cart.html">Cart</a></li>
           <li><a href="#">Profile</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="#" id="logout">Logout</a></li>
         </ul>
       </nav>
     </div>
@@ -29,7 +29,7 @@
   <section>
     <div class="container">
 
-      <form>
+      <form id="login-form" action="" method="POST">
         <ul class="form-content">
           <li>
             <h2>
@@ -45,8 +45,8 @@
             <label for="passw">Password</label>
             <input type="password" id="passw" placeholder="Enter your password here">
           </li>
-          <li>
-            <input type="submit" name="submit" value="Login" class="user-btn" formaction="store.html" />
+          <li >
+            <input type="submit" id="login" name="submit" value="Login" class="user-btn" formaction="" />
           </li>
         </ul>
       </form>
@@ -57,5 +57,6 @@
   <footer class="footer">
     <p>Copyright &copy; 2018 | Dann's</p>
   </footer>
+  <script type="module"  src="./UI/js/login.js"></script>
 </body>
 </html>
