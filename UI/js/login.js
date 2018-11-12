@@ -48,7 +48,7 @@ function getTokenFunction(e) {
                 window.location.href='store.html';
                 // alert("Signed in successfully");
             // }, 10000);
-    
+
         // }
         // else{
         //     info += `Wrong username or password`;
