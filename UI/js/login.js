@@ -45,7 +45,9 @@ function getTokenFunction(e) {
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('user_role', data.role);
         localStorage.setItem('username', username);
+
         localStorage.setItem('logged_in', 'True');
         // let me = localStorage.getItem('access_token');
         console.log(data)
@@ -53,9 +55,10 @@ function getTokenFunction(e) {
         // if (data.access_token) {
         //     alert("Signed in successfully");
             // setTimeout(function () {
-                window.location.href='store.html'
+                window.location.href='store.html';
+                // alert("Signed in successfully");
             // }, 10000);
-    
+
         // }
         // else{
         //     info += `Wrong username or password`;
