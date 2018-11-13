@@ -8,7 +8,7 @@ console.log(sales)
 
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
 if(localStorage.getItem('logged_in') == 'False'){
-  window.location.href='index.html';
+  window.location.href='../index.html';
   // alert("Please log in first")
 };
 

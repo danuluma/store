@@ -10,11 +10,11 @@ export function logoutUser(){
             alert("Logged out successfully!");
             // });
             localStorage.setItem('logged_in', 'False');
-            window.location.href='index.html';
+            window.location.href='../index.html';
         }
         else {
             // alert("Not logged in")
-            window.location.href='index.html';
+            window.location.href='../index.html';
         }
     });
 
@@ -22,5 +22,5 @@ export function logoutUser(){
     // console.log(logoutBtn);
 };
 
-// export const url_base = 'http://localhost:5000/api/v2';
-export const url_base = 'https://dannstore.herokuapp.com/api/v2';
+export const url_base = 'http://localhost:5000/api/v2';
+// export const url_base = 'https://dannstore.herokuapp.com/api/v2';
