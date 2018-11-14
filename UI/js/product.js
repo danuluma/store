@@ -71,8 +71,8 @@ function getBooksFunction(e) {
     })
 }
 
-actions = prod.getElementsByClassName("actions")
-console.log(actions);
+// actions = prod.getElementsByClassName("actions")
+console.log(prod);
 
 prod.addEventListener('click', deleteThis);
 
@@ -81,7 +81,7 @@ function deleteThis(e){
   console.log(e.target.type);
   if (e.target.type == 'edit'){
     localStorage.setItem("edit_book", JSON.stringify(e.target.id));
-    window.location.href='edit.html';
+    window.location.href='./edit.html';
   }
 
   if (e.target.type == 'delete'){
