@@ -100,6 +100,7 @@ function addBookToCart(e) {
           cart.push(to_cart);
           console.log(JSON.stringify(cart));
           localStorage.setItem("cart", JSON.stringify(cart))
+          alert("Book added to cart!")
       
         }
       }

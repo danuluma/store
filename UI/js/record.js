@@ -38,7 +38,21 @@ function getSalesFunction(e) {
       let salesData = data.Sales;
       // console.log(salesData);
 
-      let output = '';
+      let output = `<div class="record">
+      <div class="date">
+        <h2>Date</h2>
+      </div>
+
+      <div class="description">
+       <h2>Description</h2>
+     </div>
+
+     <div class="attendant">
+      <ul>
+        <h2>Attendant</h2>
+      </ul>
+    </div>
+  </div>`;
       salesData.forEach(function (sale) { 
         let time = sale.created_at.split('.')
         // console.log(time);
