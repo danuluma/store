@@ -11,7 +11,7 @@ cat.addEventListener('click', addBookToCart);
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
 
 if(localStorage.getItem('logged_in') == 'False'){
-  window.location.href='index.html';
+  window.location.href='../index.html';
   // alert("Please log in first")
 };
 
@@ -100,6 +100,7 @@ function addBookToCart(e) {
           cart.push(to_cart);
           console.log(JSON.stringify(cart));
           localStorage.setItem("cart", JSON.stringify(cart))
+          alert("Book added to cart!")
       
         }
       }

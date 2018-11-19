@@ -10,7 +10,7 @@ logoutUser();
 // const url_base = 'http://localhost:5000/api/v2';
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
 if(localStorage.getItem('logged_in') == 'False'){
-  window.location.href='index.html';
+  window.location.href='../index.html';
   // alert("Please log in first")
 };
 
@@ -71,8 +71,8 @@ function getBooksFunction(e) {
     })
 }
 
-actions = prod.getElementsByClassName("actions")
-console.log(actions);
+// actions = prod.getElementsByClassName("actions")
+console.log(prod);
 
 prod.addEventListener('click', deleteThis);
 
@@ -81,7 +81,7 @@ function deleteThis(e){
   console.log(e.target.type);
   if (e.target.type == 'edit'){
     localStorage.setItem("edit_book", JSON.stringify(e.target.id));
-    window.location.href='edit.html';
+    window.location.href='./edit.html';
   }
 
   if (e.target.type == 'delete'){

@@ -14,10 +14,10 @@ checkout.addEventListener('click', create_sale);
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
 
 if(localStorage.getItem('logged_in') == 'False'){
-  window.location.href='index.html';
+  window.location.href='../index.html';
   // alert("Please log in first")
 };
-
+console.log(localStorage.getItem('user_role'));
 showCartItems();
 
 function showCartItems() {
@@ -63,9 +63,10 @@ function create_sale(e){
     let book_list = JSON.parse(localStorage.getItem("book_list"));
     let access_token = localStorage.getItem('access_token');
 
-    console.log(access_token);
+    
+    if(localStorage.getItem('user_role') == 'user'){
 
-    fetch(url, {
+      fetch(url, {
         "async": true,
         "crossDomain": true,
         "url": url,
@@ -83,6 +84,13 @@ function create_sale(e){
             alert(JSON.stringify(data));
             localStorage.removeItem("book_list");
             localStorage.removeItem("cart");
-            window.location.href='store.html';
+            window.location.href='./store.html';
             })
+      }
+      else{
+        alert("Only attendants can make sales!")
+        window.location.href='../index.html';
+        
+      }
+
     }

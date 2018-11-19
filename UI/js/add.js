@@ -11,14 +11,14 @@ newBook.addEventListener('submit', uploadImage);
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
 
 if(localStorage.getItem('logged_in') == 'False'){
-    window.location.href='index.html';
+    window.location.href='../index.html';
     // alert("Please log in first")
   };
   
 
 function addBookFunction(image_url) {
     
-    alert("Hey")
+    // alert("Hey")
     // uploadImage(document.querySelector('#new-book #image').files[0]);
     // let element;
     let title = document.querySelector('#title').value;
@@ -26,13 +26,23 @@ function addBookFunction(image_url) {
     let price = document.querySelector('#price').value;
     let quantity = document.querySelector('#quantity').value;
     let min = document.querySelector('#min').value;
-    let image = document.querySelector('#image').value;
+    // let image = document.querySelector('#image').value;
     // let image_url = 'https://res.cloudinary.com/danuluma/image/upload/v1541557642/dannstore/aaaindex.png';
     // let image_url = localStorage.getItem('image_url');
-    console.log(image_url)
+    // console.log(image_url)
     let access_token = localStorage.getItem('access_token');
+    
     // element = e;
     const url = url_base + '/products';
+    console.log(JSON.stringify({
+        "title": title,
+        "description": description,
+        "category": "category",
+        "price": price,
+        "quantity": quantity,
+        "minimum": min,
+        "image_url": image_url
+    }));
     fetch(url, {
         "async": true,
         "crossDomain": true,

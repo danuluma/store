@@ -1,7 +1,8 @@
 body{
   font-family: sans-serif;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.5
+
   min-height: 100vh;
   padding: 0;
   margin: 0;
@@ -9,6 +10,7 @@ body{
 }
 
 /* global stuff */
+
 
 .container{
   width:80%;
@@ -63,6 +65,7 @@ header nav{
   float: right;
   margin-top: 10px;
 }
+
 
 #book_id{
   display: none;

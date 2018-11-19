@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Dann">
+  <title>Dann's Books</title>
+  <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1><a href="./UI/store.html">Dann's Book Store</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="./UI/product.html">Admin</a></li>
+          <li><a href="./UI/cart.html">Cart</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#" id="logout">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+
+      <form id="login-form" action="" method="POST">
+        <ul class="form-content">
+          <li>
+            <h2>
+              Login
+            </h2>
+          </li>
+          <li>
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username here">
+          </li>
+
+          <li>
+            <label for="passw">Password</label>
+            <input type="password" id="passw" placeholder="Enter your password here">
+          </li>
+          <li >
+            <input type="submit" id="login" name="submit" value="Login" class="user-btn" formaction="" />
+          </li>
+        </ul>
+      </form>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Copyright &copy; 2018 | Dann's</p>
+  </footer>
+  <script type="module"  src="./UI/js/login.js"></script>
+</body>
+</html>

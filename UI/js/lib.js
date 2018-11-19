@@ -10,11 +10,11 @@ export function logoutUser(){
             alert("Logged out successfully!");
             // });
             localStorage.setItem('logged_in', 'False');
-            window.location.href='index.html';
+            window.location.href='../index.html';
         }
         else {
             // alert("Not logged in")
-            window.location.href='index.html';
+            window.location.href='../index.html';
         }
     });
 

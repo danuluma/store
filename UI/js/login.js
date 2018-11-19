@@ -15,8 +15,8 @@ loginForm.addEventListener('submit', getTokenFunction);
 
 // const url_base = 'https://dannstore.herokuapp.com/api/v2'
 // console.log(url_base)
-if(localStorage.getItem('logged_in') == 'False'){
-    // window.location.href='index.html';
+if(localStorage.getItem('logged_in') == 'True'){
+    window.location.href='./UI/store.html';
     // alert("Please log in first")
   };
 
@@ -55,7 +55,7 @@ function getTokenFunction(e) {
             localStorage.setItem('username', username);
 
             localStorage.setItem('logged_in', 'True');
-            window.location.href='store.html';
+            window.location.href='./UI/store.html';
         }
         // info = '<h3> </h3>'
         // if (data.access_token) {
