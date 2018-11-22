@@ -1,6 +1,8 @@
 const cat = document.querySelector('.catalogue li');
-import {logoutUser, url_base} from './lib.js';
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
+showMessage();
+// setTimeout(showMessage, 3000);
 
 
 cat.addEventListener('click', addBookToCart);
