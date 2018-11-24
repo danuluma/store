@@ -1,3 +1,4 @@
+
 const newBook = document.querySelector('body section .new-item');
 import {logoutUser, url_base} from './lib.js';
 logoutUser();
@@ -14,10 +15,10 @@ if(localStorage.getItem('logged_in') == 'False'){
     window.location.href='../index.html';
     // alert("Please log in first")
   };
-  
+
 
 function addBookFunction(image_url) {
-    
+
     // alert("Hey")
     // uploadImage(document.querySelector('#new-book #image').files[0]);
     // let element;
@@ -31,7 +32,7 @@ function addBookFunction(image_url) {
     // let image_url = localStorage.getItem('image_url');
     // console.log(image_url)
     let access_token = localStorage.getItem('access_token');
-    
+
     // element = e;
     const url = url_base + '/products';
     console.log(JSON.stringify({
@@ -84,7 +85,7 @@ function uploadImage(e) {
     const cloudinary_url = 'https://api.cloudinary.com/v1_1/danuluma/image/upload';
     const data = new FormData();
     data.append("file", file);
-    data.append("upload_preset", 'ry6j3ae4'); 
+    data.append("upload_preset", 'ry6j3ae4');
 
     fetch(cloudinary_url, {
         method: 'POST',
@@ -95,12 +96,12 @@ function uploadImage(e) {
             console.log(data.secure_url)
             if (data.secure_url !== '') {
                 let image_url = data.secure_url;
-                addBookFunction(image_url);     
+                addBookFunction(image_url);
             }
         })
         .catch(err => {
             console.error(err);
             confirm("Error encountered. Continue without an image?");
-            addBookFunction("#");       
+            addBookFunction("#");
         })
     }

@@ -6,17 +6,11 @@ const loginPassw = document.querySelector('#login-form #passw');
 import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
 showMessage();
-// setTimeout(showMessage, 3000);
-
 
 
 loginForm.addEventListener('submit', getTokenFunction);
 
 
-
-
-// const url_base = 'https://dannstore.herokuapp.com/api/v2'
-// console.log(url_base)
 if(localStorage.getItem('logged_in') == 'True'){
     window.location.href='./UI/store.html';
     // alert("Please log in first")
