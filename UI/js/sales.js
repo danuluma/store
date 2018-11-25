@@ -4,13 +4,9 @@ logoutUser();
 showMessage();
 
 
-
-
-
-// const url_base = 'https://dannstore.herokuapp.com/api/v2'
 if(localStorage.getItem('logged_in') == 'False'){
+  localStorage.setItem('error', "Please log in first");
   window.location.href='../index.html';
-  // alert("Please log in first")
 };
 
 

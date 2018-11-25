@@ -3,16 +3,9 @@ import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
 showMessage();
 
-
-// prod.addEventListener('click', addBookToCart);
-
-
-// console.log(prod)
-// const url_base = 'http://localhost:5000/api/v2';
-// const url_base = 'https://dannstore.herokuapp.com/api/v2'
 if(localStorage.getItem('logged_in') == 'False'){
+  localStorage.setItem('error', "Please log in first");
   window.location.href='../index.html';
-  // alert("Please log in first")
 };
 
 
@@ -72,8 +65,6 @@ function getBooksFunction(e) {
     })
 }
 
-// actions = prod.getElementsByClassName("actions")
-console.log(prod);
 
 prod.addEventListener('click', deleteThis);
 
@@ -103,6 +94,7 @@ function deleteThis(e){
           })
           .then((res) => res.json())
           .then((data) => {
+            localStorage.setItem('success', JSON.stringify(data));
             window.location.href='product.html';
             })
   }

@@ -8,8 +8,9 @@ cat.addEventListener('click', addBookToCart);
 
 
 if(localStorage.getItem('logged_in') == 'False'){
+  localStorage.setItem('error', "Please log in first");
   window.location.href='../index.html';
-};
+}
 
 getBooksFunction();
 function getBooksFunction(e) {
@@ -72,7 +73,9 @@ function addBookToCart(e) {
     books.forEach(function (book){
       if (book.id == book_id){
         if (book.quantity <= book.minimum){
-          alert("Sorry this book is out of stock!")
+          localStorage.setItem("error", "Sorry this book is out of stock!");
+          showMessage();
+          // alert("Sorry this book is out of stock!")
         }
         else {
           let to_cart = {
@@ -92,8 +95,9 @@ function addBookToCart(e) {
       
           cart.push(to_cart);
           console.log(JSON.stringify(cart));
-          localStorage.setItem("cart", JSON.stringify(cart))
-          alert("Book added to cart!")
+          localStorage.setItem("cart", JSON.stringify(cart));
+          localStorage.setItem("success", "Book added to cart!");
+          showMessage();
       
         }
       }

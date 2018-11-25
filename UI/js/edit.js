@@ -29,14 +29,10 @@ function showBook(data){
     price.setAttribute("value", data.price);
     quantity.setAttribute("value", data.quantity);
     min.setAttribute("value", data.minimum);
-    // console.log(data.description)
 }
 
 function getBookFunction(e) {
-    let element;
-    // console.log(book_id)
     let access_token = localStorage.getItem('access_token');
-    element = e;
     const url = url_base + '/products/' + book_id;
     // let data1;
     fetch(url, {
@@ -52,7 +48,6 @@ function getBookFunction(e) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         showBook(data);
       })
     // return data1
@@ -63,7 +58,6 @@ function editProductFunction(image_url) {
     // e.preventDefault();
     // alert(book_id)
     // uploadImage(document.querySelector('#new-book #image').files[0]);
-    // let element;
     let title = document.querySelector('#title').value;
     let description = document.querySelector('#description').value;
     let price = document.querySelector('#price').value;
@@ -74,7 +68,6 @@ function editProductFunction(image_url) {
     // let image_url = localStorage.getItem('image_url');
     console.log(image)
     let access_token = localStorage.getItem('access_token');
-    // element = e;
     const url = url_base + '/products/' + book_id;
     fetch(url, {
         "async": true,
@@ -101,6 +94,7 @@ function editProductFunction(image_url) {
         console.log(data);
         if (data.Error){
             localStorage.setItem('error', JSON.stringify(data.Error));
+            showMessage();
             // alert(JSON.stringify(data.Error))
         }
         if (data.Message){
@@ -136,7 +130,6 @@ function editProductFunction(image_url) {
             }
         })
         .catch(err => {
-            console.error(err);
             confirm("Error encountered. Continue without an image?");
             editProductFunction("#");       
         })
