@@ -107,4 +107,4 @@ UI/js/ls*
 UI/js/test*
 test*
 .eslintrc
-
+node_modules/

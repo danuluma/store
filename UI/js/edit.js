@@ -1,18 +1,16 @@
 const editBook = document.querySelector('body section .edit-item');
-import {logoutUser, url_base} from './lib.js';
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
+showMessage();
 
 
 
 editBook.addEventListener('submit', uploadImage);
 
-// console.log(newBook)
-// const url_base = 'http://localhost:5000/api/v2'
-// const url_base = 'https://dannstore.herokuapp.com/api/v2'
 
 if(localStorage.getItem('logged_in') == 'False'){
     window.location.href='../index.html';
-    // alert("Please log in first")
+    localStorage.setItem('error', "Please log in first");
   };
   
 let book_id = JSON.parse(localStorage.getItem("edit_book"));
@@ -102,11 +100,13 @@ function editProductFunction(image_url) {
       .then((data) => {
         console.log(data);
         if (data.Error){
-            alert(JSON.stringify(data.Error))
+            localStorage.setItem('error', JSON.stringify(data.Error));
+            // alert(JSON.stringify(data.Error))
         }
         if (data.Message){
-            alert(JSON.stringify(data.Message))
-            window.location.href='product.html'
+            localStorage.setItem('success', JSON.stringify(data.Message));
+            // alert(JSON.stringify(data.Message))
+            window.location.href='./product.html'
         }
         // window.location.href='add.html'
         })
@@ -127,18 +127,18 @@ function editProductFunction(image_url) {
             method: 'POST',
             body: data
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.secure_url)
-                if (data.secure_url !== '') {
-                    let image_url = data.secure_url;
-                    editProductFunction(image_url);     
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                confirm("Error encountered. Continue without an image?");
-                editProductFunction("#");       
-            })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.secure_url)
+            if (data.secure_url !== '') {
+                let image_url = data.secure_url;
+                editProductFunction(image_url);     
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            confirm("Error encountered. Continue without an image?");
+            editProductFunction("#");       
+        })
         }
     

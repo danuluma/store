@@ -2,8 +2,9 @@ const regForm = document.getElementById('reg-form');
 const regName = document.querySelector('#reg-form #username');
 const regPassw = document.querySelector('#reg-form #passw');
 const confirmPassw = document.querySelector('#reg-form #confirm_passw');
-import {logoutUser, url_base} from './lib.js';
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
+showMessage();
 
 
 

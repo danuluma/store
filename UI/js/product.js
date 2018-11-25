@@ -1,6 +1,7 @@
 const prod = document.querySelector('body section .container');
-import {logoutUser, url_base} from './lib.js';
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
+showMessage();
 
 
 // prod.addEventListener('click', addBookToCart);

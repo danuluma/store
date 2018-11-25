@@ -1,6 +1,7 @@
 const sales = document.querySelector('#sales');
-import {logoutUser, url_base} from './lib.js';
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
+showMessage();
 
 console.log(sales)
 
