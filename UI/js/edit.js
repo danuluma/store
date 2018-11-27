@@ -1,18 +1,16 @@
 const editBook = document.querySelector('body section .edit-item');
-import {logoutUser, url_base} from './lib.js';
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
+showMessage();
 
 
 
 editBook.addEventListener('submit', uploadImage);
 
-// console.log(newBook)
-// const url_base = 'http://localhost:5000/api/v2'
-// const url_base = 'https://dannstore.herokuapp.com/api/v2'
 
 if(localStorage.getItem('logged_in') == 'False'){
     window.location.href='../index.html';
-    // alert("Please log in first")
+    localStorage.setItem('error', "Please log in first");
   };
   
 let book_id = JSON.parse(localStorage.getItem("edit_book"));
@@ -31,14 +29,10 @@ function showBook(data){
     price.setAttribute("value", data.price);
     quantity.setAttribute("value", data.quantity);
     min.setAttribute("value", data.minimum);
-    // console.log(data.description)
 }
 
 function getBookFunction(e) {
-    let element;
-    // console.log(book_id)
     let access_token = localStorage.getItem('access_token');
-    element = e;
     const url = url_base + '/products/' + book_id;
     // let data1;
     fetch(url, {
@@ -54,7 +48,6 @@ function getBookFunction(e) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         showBook(data);
       })
     // return data1
@@ -65,7 +58,6 @@ function editProductFunction(image_url) {
     // e.preventDefault();
     // alert(book_id)
     // uploadImage(document.querySelector('#new-book #image').files[0]);
-    // let element;
     let title = document.querySelector('#title').value;
     let description = document.querySelector('#description').value;
     let price = document.querySelector('#price').value;
@@ -76,7 +68,6 @@ function editProductFunction(image_url) {
     // let image_url = localStorage.getItem('image_url');
     console.log(image)
     let access_token = localStorage.getItem('access_token');
-    // element = e;
     const url = url_base + '/products/' + book_id;
     fetch(url, {
         "async": true,
@@ -102,11 +93,14 @@ function editProductFunction(image_url) {
       .then((data) => {
         console.log(data);
         if (data.Error){
-            alert(JSON.stringify(data.Error))
+            localStorage.setItem('error', JSON.stringify(data.Error));
+            showMessage();
+            // alert(JSON.stringify(data.Error))
         }
         if (data.Message){
-            alert(JSON.stringify(data.Message))
-            window.location.href='product.html'
+            localStorage.setItem('success', JSON.stringify(data.Message));
+            // alert(JSON.stringify(data.Message))
+            window.location.href='./product.html'
         }
         // window.location.href='add.html'
         })
@@ -127,18 +121,17 @@ function editProductFunction(image_url) {
             method: 'POST',
             body: data
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.secure_url)
-                if (data.secure_url !== '') {
-                    let image_url = data.secure_url;
-                    editProductFunction(image_url);     
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                confirm("Error encountered. Continue without an image?");
-                editProductFunction("#");       
-            })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.secure_url)
+            if (data.secure_url !== '') {
+                let image_url = data.secure_url;
+                editProductFunction(image_url);     
+            }
+        })
+        .catch(err => {
+            confirm("Error encountered. Continue without an image?");
+            editProductFunction("#");       
+        })
         }
     

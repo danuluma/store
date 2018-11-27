@@ -1,34 +1,26 @@
 const cart = document.querySelector('body section .container');
 const checkout = document.querySelector('body .checkout input');
-import {logoutUser, url_base} from './lib.js';
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
-
-
+showMessage();
 
 checkout.addEventListener('click', create_sale);
-// console.log(localStorage.getItem('cart'));
-
-
-
-// const url_base = 'http://localhost:5000/api/v2';
-// const url_base = 'https://dannstore.herokuapp.com/api/v2'
 
 if(localStorage.getItem('logged_in') == 'False'){
   window.location.href='../index.html';
-  // alert("Please log in first")
+  localStorage.setItem('error', "Please log in first!");
 };
-console.log(localStorage.getItem('user_role'));
+
 showCartItems();
 
 function showCartItems() {
-    // console.log(cart.querySelector('tfoot .price'));
     let body = cart.querySelector('tbody');
     let foot = cart.querySelector('tfoot .price');
 
     let items = (JSON.parse(localStorage.getItem("cart")));
     if(items == null){
-      window.location.href='store.html';
-      // alert("Please log in first")
+      window.location.href='./store.html';
+      localStorage.setItem('success', "Please add items to your cart");
     }
     else {
       console.log(items);
@@ -36,8 +28,6 @@ function showCartItems() {
       let list = [];
       let output = '';
         items.forEach(function (book) { 
-          // console.log(book);
-          // console.log(parseInt(book.price));
           list.push(parseInt(book.book_id));
           total += parseFloat(book.price);
           output += `
@@ -52,7 +42,6 @@ function showCartItems() {
           body.innerHTML = output;
           foot.innerHTML = `Ksh ${total}`;
           localStorage.setItem("book_list", JSON.stringify(list))
-          // console.log(list);
     }
 
 }
@@ -81,14 +70,16 @@ function create_sale(e){
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            alert(JSON.stringify(data));
+            localStorage.setItem('sucess', JSON.stringify(data));
+            // alert(JSON.stringify(data));
             localStorage.removeItem("book_list");
             localStorage.removeItem("cart");
             window.location.href='./store.html';
             })
       }
       else{
-        alert("Only attendants can make sales!")
+        localStorage.setItem('error', "Only attendants can make sales!");
+        // alert("Only attendants can make sales!")
         window.location.href='../index.html';
         
       }

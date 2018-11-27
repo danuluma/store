@@ -1,26 +1,20 @@
 const cat = document.querySelector('.catalogue li');
-import {logoutUser, url_base} from './lib.js';
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
+showMessage();
 
 
 cat.addEventListener('click', addBookToCart);
 
 
-
-// const url_base = 'http://localhost:5000/api/v2';
-// const url_base = 'https://dannstore.herokuapp.com/api/v2'
-
 if(localStorage.getItem('logged_in') == 'False'){
+  localStorage.setItem('error', "Please log in first");
   window.location.href='../index.html';
-  // alert("Please log in first")
-};
+}
 
 getBooksFunction();
 function getBooksFunction(e) {
-  let element;
-
   let access_token = localStorage.getItem('access_token');
-  element = e;
   const url = url_base + '/products';
   fetch(url, {
     "async": true,
@@ -79,7 +73,9 @@ function addBookToCart(e) {
     books.forEach(function (book){
       if (book.id == book_id){
         if (book.quantity <= book.minimum){
-          alert("Sorry this book is out of stock!")
+          localStorage.setItem("error", "Sorry this book is out of stock!");
+          showMessage();
+          // alert("Sorry this book is out of stock!")
         }
         else {
           let to_cart = {
@@ -99,8 +95,9 @@ function addBookToCart(e) {
       
           cart.push(to_cart);
           console.log(JSON.stringify(cart));
-          localStorage.setItem("cart", JSON.stringify(cart))
-          alert("Book added to cart!")
+          localStorage.setItem("cart", JSON.stringify(cart));
+          localStorage.setItem("success", "Book added to cart!");
+          showMessage();
       
         }
       }
@@ -112,52 +109,3 @@ function addBookToCart(e) {
   }
  
   
-
-  // function addBookToCart(e) {
-  //   let element;
-  //   element = e;
-  //   e.preventDefault();
-  //   const url = url_base + '/login';
-  //   fetch(url, {
-  //       "async": true,
-  //       "crossDomain": true,
-  //       "url": url,
-  //       "method": "POST",
-  //       "headers": {
-  //           "Content-Type": "application/json",
-  //           "Cache-Control": "no-cache"
-  //       },
-  //       body:JSON.stringify({
-  //           "username": username,
-  //       "password": password})
-  //     })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data)
-  //       })
-  //   }
-
-
-  // const url = url_base + '/sales';
-
-  // fetch(url, {
-  //     "async": true,
-  //     "crossDomain": true,
-  //     "url": url,
-  //     "method": "POST",
-  //     "headers": {
-  //       "Authorization": "Bearer " + access_token,
-  //       "Content-Type": "application/json",
-  //       "Cache-Control": "no-cache"
-  //     },
-  //     body:JSON.stringify({"book_id": book_id})
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data)
-  //       })
-
-
-
-
-

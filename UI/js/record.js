@@ -1,15 +1,12 @@
 const sales = document.querySelector('#sales');
-import {logoutUser, url_base} from './lib.js';
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
-
-console.log(sales)
-
+showMessage();
 
 
-// const url_base = 'https://dannstore.herokuapp.com/api/v2'
 if(localStorage.getItem('logged_in') == 'False'){
+  localStorage.setItem('error', "Please log in first");
   window.location.href='../index.html';
-  // alert("Please log in first")
 };
 
 
@@ -18,7 +15,6 @@ function getSalesFunction(e) {
   let element;
 
   let access_token = localStorage.getItem('access_token');
-  console.log(access_token);
   element = e;
   const url = url_base + '/sales';
   fetch(url, {

@@ -1,23 +1,20 @@
 const loginForm = document.getElementById('login-form');
 const loginName = document.querySelector('#login-form #username');
 const loginPassw = document.querySelector('#login-form #passw');
-// const retinfo = document.querySelector('#show-info');
 
-import {logoutUser, url_base} from './lib.js';
+
+import {logoutUser, url_base, showMessage} from './lib.js';
 logoutUser();
-
+showMessage();
+// console.log(showMessage);
 
 
 loginForm.addEventListener('submit', getTokenFunction);
 
 
-
-
-// const url_base = 'https://dannstore.herokuapp.com/api/v2'
-// console.log(url_base)
 if(localStorage.getItem('logged_in') == 'True'){
+    localStorage.setItem('success', "Success! Logged in");
     window.location.href='./UI/store.html';
-    // alert("Please log in first")
   };
 
 
@@ -44,32 +41,19 @@ function getTokenFunction(e) {
       })
       .then((res) => res.json())
       .then((data) => {
-        // let me = localStorage.getItem('access_token');
         console.log(data)
         if (data.Error){
             alert(data.Error);
+            localStorage.setItem('error', data.Error);
         }
         else{
             localStorage.setItem('access_token', data.access_token);
             localStorage.setItem('user_role', data.role);
             localStorage.setItem('username', username);
-
+            localStorage.setItem('success', "Success! Logged in");
             localStorage.setItem('logged_in', 'True');
             window.location.href='./UI/store.html';
         }
-        // info = '<h3> </h3>'
-        // if (data.access_token) {
-        //     alert("Signed in successfully");
-            // setTimeout(function () {
-                // window.location.href='store.html';
-                // alert("Signed in successfully");
-            // }, 10000);
-
-        // }
-        // else{
-        //     info += `Wrong username or password`;
-        //     retinfo.innerHTML = info;
-        // }
         })
     }
 
