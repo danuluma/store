@@ -21,11 +21,14 @@ let price = document.querySelector('#price');
 let quantity = document.querySelector('#quantity');
 let min = document.querySelector('#min');
 let image = document.querySelector('#image');
+let cloud_url;
 
 getBookFunction();
 function showBook(data){
+    console.log(data)
+    cloud_url = data.image_url;
     title.setAttribute("value", data.title);
-    description.setAttribute("value", data.description);
+    description.innerHTML = data.description;
     price.setAttribute("value", data.price);
     quantity.setAttribute("value", data.quantity);
     min.setAttribute("value", data.minimum);
@@ -56,7 +59,7 @@ function getBookFunction(e) {
 
 function editProductFunction(image_url) {
     // e.preventDefault();
-    // alert(book_id)
+    // alert(book_id);
     // uploadImage(document.querySelector('#new-book #image').files[0]);
     let title = document.querySelector('#title').value;
     let description = document.querySelector('#description').value;
@@ -64,8 +67,7 @@ function editProductFunction(image_url) {
     let quantity = document.querySelector('#quantity').value;
     let min = document.querySelector('#min').value;
     let image = document.querySelector('#image').value;
-    // let image_url = 'https://res.cloudinary.com/danuluma/image/upload/v1541557642/dannstore/aaaindex.png';
-    // let image_url = localStorage.getItem('image_url');
+   
     console.log(image)
     let access_token = localStorage.getItem('access_token');
     const url = url_base + '/products/' + book_id;
@@ -92,17 +94,16 @@ function editProductFunction(image_url) {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.Error){
-            localStorage.setItem('error', JSON.stringify(data.Error));
-            showMessage();
-            // alert(JSON.stringify(data.Error))
-        }
+        // if (data.Error){
+        //     localStorage.setItem('error', JSON.stringify(data.Error));
+        //     return showMessage();
+        //     // alert(JSON.stringify(data.Error))
+        // }
         if (data.Message){
             localStorage.setItem('success', JSON.stringify(data.Message));
             // alert(JSON.stringify(data.Message))
             window.location.href='./product.html'
         }
-        // window.location.href='add.html'
         })
     }
 
@@ -111,7 +112,9 @@ function editProductFunction(image_url) {
     function uploadImage(e) {
         e.preventDefault();
         let file = document.querySelector('#image').files[0];
-        console.log(file);
+        if(!file){
+            return editProductFunction(cloud_url);
+        }
         const cloudinary_url = 'https://api.cloudinary.com/v1_1/danuluma/image/upload';
         const data = new FormData();
         data.append("file", file);
@@ -126,12 +129,17 @@ function editProductFunction(image_url) {
             console.log(data.secure_url)
             if (data.secure_url !== '') {
                 let image_url = data.secure_url;
-                editProductFunction(image_url);     
+                return editProductFunction(image_url);     
             }
         })
         .catch(err => {
-            confirm("Error encountered. Continue without an image?");
-            editProductFunction("#");       
+            // confirm("Error encountered. Continue without an image?");
+            return editProductFunction(cloud_url);       
         })
         }
+
+    function checkImage(e){
+        e.preventDefault;
+        console.log()
+    }
     
