@@ -54,5 +54,5 @@ export function showMessage(){
     
 }
 
-export const url_base = 'http://localhost:5000/api/v2';
-// export const url_base = 'https://dannstore.herokuapp.com/api/v2';
+// export const url_base = 'http://localhost:5000/api/v2';
+export const url_base = 'https://dannstore.herokuapp.com/api/v2';
