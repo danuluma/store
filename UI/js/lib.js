@@ -26,7 +26,7 @@ export function showMessage(){
     const page = document.querySelector('section .container');
     let div = document.createElement("div"); 
     let para = document.createElement("P");
-    console.log(error);
+  
     
     if (error){
         let text = document.createTextNode(error);  
@@ -44,7 +44,6 @@ export function showMessage(){
         para.appendChild(text);                                          
         page.insertBefore(div, page.children[0]);
         setTimeout(removenotif, 3000);
-        console.log(page);
     }
     function removenotif(){
         page.removeChild(page.children[0]);
@@ -55,5 +54,5 @@ export function showMessage(){
     
 }
 
-export const url_base = 'http://localhost:5000/api/v2';
-// export const url_base = 'https://dannstore.herokuapp.com/api/v2';
+// export const url_base = 'http://localhost:5000/api/v2';
+export const url_base = 'https://dannstore.herokuapp.com/api/v2';

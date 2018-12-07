@@ -32,6 +32,10 @@ function getSalesFunction(e) {
     .then((data) => {
 
       let salesData = data.Sales;
+      if (!salesData){
+        localStorage.setItem('error', "No sales available");
+        return window.location.href='./store.html';
+      }
       // console.log(salesData);
 
       let output = `<div class="record">
@@ -51,6 +55,42 @@ function getSalesFunction(e) {
   </div>`;
       salesData.forEach(function (sale) { 
         let time = sale.created_at.split('.')
+        let books_sold = sale.books;
+        let books = ``;
+
+        console.log(books);
+        
+        books_sold.forEach(function (book_id){
+          
+          let access_token = localStorage.getItem('access_token');
+          const url = url_base + '/products/' + book_id;
+          // let data1;
+          fetch(url, {
+            "async": true,
+            "crossDomain": true,
+            "url": url,
+            "method": "GET",
+            "headers": {
+              "Authorization": "Bearer " + access_token,
+              "Content-Type": "application/json",
+              "Cache-Control": "no-cache"
+            }
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              localStorage.setItem('temp_book', JSON.stringify(data));
+              // console.log(data);
+              // thisBook(data);
+
+          })
+          let data2 = JSON.parse(localStorage.getItem('temp_book'));
+          // books += `<p>Title: ${data2.title} Price: ${data2.price}</p>`;
+          books += `<div id="item">
+            <div>${data2.title}</div>
+            <div>${data2.price}</div>
+          </div>`
+        })
+        console.log(books)
         // console.log(time);
         output += `
         <div class="record">
@@ -59,10 +99,7 @@ function getSalesFunction(e) {
         </div>
 
         <div class="description">
-          <div id="item">
-            <div>Books</div>
-            <div>${sale.books}</div>
-          </div>
+          ${books}
 
           <br>
           <div id="item">
